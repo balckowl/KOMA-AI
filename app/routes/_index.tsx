@@ -6,6 +6,14 @@ import { redirect, type MetaFunction } from "@remix-run/node";
 import { motion } from 'framer-motion'
 // zustand
 import { useKomaStore } from "~/zustand/komaStore";
+// components
+import Header from "./components/top/header";
+import Hero from "./components/top/hero";
+import Trend from "./components/top/trend";
+import How from "./components/top/how";
+import News from "./components/top/news";
+import Tech from "./components/top/tech";
+import TopFooter from "./components/top/topFooter";
 
 export const meta: MetaFunction = () => {
   return [
@@ -15,27 +23,26 @@ export const meta: MetaFunction = () => {
 };
 
 // ログインしていない場合、sign-inページにリダイレクトする
-export const loader = async(args: any) => {
-  const {userId} = await getAuth(args)
-  if(!userId) {
-    return redirect("/sign-in")
-  }
-  return null
-}
+// export const loader = async(args: any) => {
+//   const {userId} = await getAuth(args)
+//   if(!userId) {
+//     return redirect("/sign-in")
+//   }
+//   return null
+// }
 
 export default function Index() {
 
 
   return (
     <div>
-      <p className="text-red-500">Hello</p>
-
-      <motion.div
-        initial={{ x: -100 }}
-        animate={{ x: 200 }}
-        className='w-[170px] h-[170px] rounded-full bg-sky-500'>
-      </motion.div>
-      <UserButton afterSignOutUrl="/sign-in"/>
+      <Header />
+      <Hero />
+      <Trend />
+      <How />
+      <News />
+      <Tech />
+      <TopFooter/>
     </div>
   );
 }
