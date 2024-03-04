@@ -13,7 +13,6 @@ const Create = () => {
   
   return (
     <div className="relative h-[100vh]">
-      <p>{step}</p>
       <Header />
       { step === 0 ? (
         <Step1 setStep={setStep} />
