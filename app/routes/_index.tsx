@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 // zustand
 import { useKomaStore } from "~/zustand/komaStore";
 // components
-import Header from "./components/top/header";
+import Header from "./components/base/header";
 import Hero from "./components/top/hero";
 import Trend from "./components/top/trend";
 import How from "./components/top/how";
