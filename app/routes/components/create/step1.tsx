@@ -1,15 +1,7 @@
 import { Form, useActionData, useLoaderData } from "@remix-run/react"
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import { Button } from "~/components/ui/button"
-import { ActionFunctionArgs, json } from "react-router";
 
-
-export const action = async({ request }:ActionFunctionArgs) => {
-  const formData = await request.formData();
-  console.log(formData)
-
-  return json({a:"a"})
-}
 
 const Step1 = ({ setStep }: { setStep: any }) => {
   const result = useActionData()
@@ -32,9 +24,19 @@ const Step1 = ({ setStep }: { setStep: any }) => {
     }
   }
 
+  const handleSubmit = async(e:FormEvent) => {
+    e.preventDefault()
+
+    const res =  await fetch("https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json")
+
+    const data = await res.json()
+
+    console.log(data)
+  }
+ 
   return (
     <div>
-      <Form method="post">
+      <form onSubmit={handleSubmit}>
         {/* titleを入力する */}
         <div className="w-max mx-auto my-10 text-xl">
           <input
@@ -74,7 +76,7 @@ const Step1 = ({ setStep }: { setStep: any }) => {
           >決定</Button>
         </div>
 
-      </Form>
+      </form>
     </div>
   )
 }
