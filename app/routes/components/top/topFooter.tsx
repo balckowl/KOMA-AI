@@ -1,6 +1,5 @@
 import { Link } from "@remix-run/react"
 
-
 const TopFooter = () => {
   return (
     <div className="container">
