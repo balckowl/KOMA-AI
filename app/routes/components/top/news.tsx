@@ -11,9 +11,9 @@ const News = () => {
     <div className="container">
       {/*  heading */}
       <div className="w-max mb-12">
-        <p className="text-sm">・新着情報</p>
+        <p className="text">・新着情報</p>
         <div className="w-full h-[4px] bg-[#00a5ec]"></div>
-        <h2 className="text-3xl font-bold">NEWS</h2>
+        <h2 className="text-4xl font-bold">NEWS</h2>
       </div>
 
       <div className="flex w-10/12 mx-auto flex-col mb-20 lg:mb-32">

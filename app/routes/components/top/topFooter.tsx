@@ -1,47 +1,51 @@
+import { Link } from "@remix-run/react"
+
 
 const TopFooter = () => {
   return (
     <div className="container">
-      <div className="flex mb-12 border-black border-t-[1px] pt-10 justify-around">
-        <div className="w-[20%] flex flex-col items-center pt-10">
-          <img src="https://placeholder.pics/svg/100" alt="logo" className="w-full"/>
-          <p className="text-center w-full">KOM-4i</p>
+      <div className="flex mb-12 pt-20 border-black border-t-[1px] justify-around">
+        <div className="flex flex-col items-center w-[20%] h-full">
+          <Link className="p-1" to="/">
+            <img src="images/logo/komai_logo.png" alt="logo" className="object-fill mb-4" />
+            <p className="text-center w-full">KOM-4i</p>
+          </Link>
         </div>
-        <div className="flex w-[70%] justify-around pt-10">
+        <div className="flex w-[70%] justify-around items-center">
           {/* ゆうた */}
           <div>
-            <img src="https://placeholder.pics/svg/100" alt="logo" className="mb-2"/>
-            <div className="text-sm">
+            <img src="images/top/author/dari.png" alt="logo" className="w-[80px] h-[80px] rounded-[50%] mb-2 mx-auto" />
+            <div>
               <p className="mb-1">ダリ</p>
-              <p>-バックエンドエンジニア</p>
-              <p>-ITパスポート勉強中</p>
+              <p className="text-sm">-バックエンドエンジニア</p>
+              <p className="text-sm">-ITパスポート勉強中</p>
             </div>
           </div>
           {/* くしら */}
           <div>
-            <img src="https://placeholder.pics/svg/100" alt="logo" className="mb-2"/>
-            <div className="text-sm">
+            <img src="images/top/author/kusirattyo.jpg" alt="logo" className="w-[80px] h-[80px] rounded-[50%] mb-2 mx-auto" />
+            <div>
               <p className="mb-1">子ぱいろっと</p>
-              <p>-フロントエンドエンジニア</p>
-              <p>-緑コーダー止まり</p>
+              <p className="text-sm">-フロントエンドエンジニア</p>
+              <p className="text-sm">-緑コーダー止まり</p>
             </div>
           </div>
           {/* ぽてきち */}
           <div>
-            <img src="https://placeholder.pics/svg/100" alt="logo" className="mb-2"/>
-            <div className="text-sm">
-              <p className="mb-1">つづみ</p>
-              <p>-バックエンドエンジニア</p>
-              <p>-最近高熱出した</p>
+            <img src="images/top/author/potekichi.png" alt="logo" className="w-[80px] h-[80px] rounded-[50%] mb-2 mx-auto" />
+            <div>
+              <p className="mb-1">tudumi</p>
+              <p className="text-sm">-バックエンドエンジニア</p>
+              <p className="text-sm">-最近高熱出した</p>
             </div>
           </div>
           {/* そら */}
           <div>
-            <img src="https://placeholder.pics/svg/100" alt="logo" className="mb-2"/>
-            <div className="text-sm">
+            <img src="images/top/author/sora.png" alt="logo" className="w-[80px] h-[80px] rounded-[50%] mb-2 mx-auto" />
+            <div>
               <p className="mb-1">Sora</p>
-              <p>-Webデザイナー</p>
-              <p>-1日1食</p>
+              <p className="text-sm">-Webデザイナー</p>
+              <p className="text-sm">-1日1食</p>
             </div>
           </div>
         </div>
