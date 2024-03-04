@@ -12,7 +12,8 @@ const Trend = () => {
   const trends = Array(10).fill(
     {
       title: "たいとる",
-      img: [
+      author: "kusira",
+      panels: [
         "https://placeholder.pics/svg/200x112",
         "https://placeholder.pics/svg/200x112",
         "https://placeholder.pics/svg/200x112",
@@ -30,11 +31,12 @@ const Trend = () => {
         <h2 className="text-4xl font-bold">TREND</h2>
       </div>
 
+
       {/* カルーセル */}
       <Carousel
         plugins={[
           Autoplay({
-            delay: 2000,
+            delay: 3000,
           }),
         ]}
         className="mb-12"
@@ -44,18 +46,17 @@ const Trend = () => {
           {trends.map((trend, i) => (
             <CarouselItem key={i} className="md:basis-1/3 lg:basis-1/4">
               <Link className="p-1" to="/">
+                <p className="mb-1 ml-1">{trends[i].author}</p>
+                {/* 漫画ページ */}
                 <div className="w-auto h-max border-black border-[1px] border-b-0 py-4" style={{ borderImage: "linear-gradient(to bottom, black, transparent) 1" }}>
-                  
                   <div className="w-max mx-auto">
                     <p className="text-center mb-2 relative z-10 border-black border-[1px]">
                       {trends[i].title}
                     </p>
                     <div className="mx-auto w-max relative z-10">
-
-                      <img src={trends[i].img[0]} className="mb-2" />
-
+                      <img src={trends[i].panels[0]} className="mb-2" />
                       <div key={i} className="mb-4 relative">
-                        <img src={trend.img[0]} className="mb-2 w-full h-auto" />
+                        <img src={trend.panels[0]} className="mb-2 w-full h-auto" />
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
                       </div>
                     </div>

@@ -53,6 +53,7 @@ const Tech = () => {
                 <img src="/images/top/tech/clip-stadio-paint.png" alt="clip-studio-paint" className="w-[70px] h-[70px] object-fit" />
                 <img src="/images/top/tech/git-icon.svg" alt="git" className="w-[60px] h-[60px] object-fit" />
                 <img src="/images/top/tech/github-icon.svg" alt="github" className="w-[60px] h-[60px] object-fit" />
+                <img src="/images/top/tech/postman-icon.svg" alt="postman" className="w-[60px] h-[60px] object-fit" />
 
               </div>
             </li>
