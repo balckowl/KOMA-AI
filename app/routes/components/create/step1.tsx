@@ -5,6 +5,7 @@ import { storage } from "~/lib/firebase/client"
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
 import { useAuth, useUser } from "@clerk/remix";
+import Loading from "../base/loading";
 
 const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: any, setPostId: any }) => {
   const [files, setFiles] = useState<any>([
@@ -69,38 +70,42 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
     setPostId(postId)
 
     //画像をアップロードしURLを取得
-    // const urls = await uploadPanels(postId)
-    // console.log(urls)
+    //開発時はここからコメントアウト
+    const urls = await uploadPanels(postId)
+    console.log(urls)
 
-    // const res = await fetch(`http://localhost:3000/api/post`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     title: title,
-    //     urls: urls,
-    //     postId: postId,
-    //     userId: userId,
-    //   }),
-    // })
+    const res = await fetch(`http://localhost:3000/api/post`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        urls: urls,
+        postId: postId,
+        userId: userId,
+      }),
+    })
 
-    // const comicTexts = await res.json()
+    const comicTexts = await res.json()
 
-    // setYonkoma(comicTexts)
+    setYonkoma(comicTexts)
+    //開発時はここまでをコメントアウト
 
-    setIsLoading(true)
-    setStep(1)
+    setTimeout(() => {
+      setIsLoading(true)
+      setStep(1)
+    }, 3000)
   }
 
   if (isLoading) {
-    return <p>loading...</p>
+    return <Loading />
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {/* titleを入力する */}
+    <div className="container">
+      <form onSubmit={handleSubmit} className="mt-10">
+        {/* titleを入力する
         <div className="w-max mx-auto my-10 text-xl">
           <input
             type="text"
@@ -110,7 +115,7 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
             onChange={(e) => setTitle(e.target.value)}
             className="border-b-[1px] border-black rounded-md p-1 focus:outline-none focus:border-b-[2px] focus:border-[#f24e1e]"
           />
-        </div>
+        </div> */}
         {/* imgを入力するbox */}
         <div className="flex flex-wrap gap-10 w-[500px] mx-auto border-2 border-black p-6">
           {[0, 1, 2, 3].map((_, i) => (

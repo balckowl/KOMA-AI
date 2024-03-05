@@ -46,9 +46,9 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
             </h1>
             {yonkoma.map((koma: any, index: number) => (
               <div className="p-3 border-black border-[2px] mb-5" key={index}>
-                <div className="flex justify-between items-center mb-3">
+                <div className="flex justify-between items-center mb-3 gap-3">
                   {selectBtnIdx === index ? (
-                    <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+                    <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} className="w-full focus:outline-none" placeholder="このコマに合うテキストを入力してください。"/>
                   ) : (
                     <h2>
                       {koma.panel}
