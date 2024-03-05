@@ -6,7 +6,7 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
 import { useAuth, useUser } from "@clerk/remix";
 
-const Step1 = ({ setStep }: { setStep: any }) => {
+const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: any, setPostId: any }) => {
   const [files, setFiles] = useState<any>([
     null,
     null,
@@ -14,6 +14,7 @@ const Step1 = ({ setStep }: { setStep: any }) => {
     null,
   ]);
 
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [title, setTitle] = useState<string>("")
   const [previews, setPreviews] = useState<string[]>([
     "/images/create/no-image.png",
@@ -34,25 +35,44 @@ const Step1 = ({ setStep }: { setStep: any }) => {
     }
   }
 
-  const uploadPanels = async(postid: string) => {
-    let urls:string[] = []
-    files.map(async(file:any, i:number) => {
-      const storageRef = ref(storage, `${postid}/${i}`);
-      await uploadBytes(storageRef, file)
-      const url = await getDownloadURL(ref(storage, `${postid}/${i}`))
-      urls.push(url)
-    })
-    return urls
-  }
-  
-  const handleSubmit = async(e:FormEvent) => {
+  const uploadPanels = async (postId: string) => {
+    const uploadTasks = files.map(async (file: any, i: number) => {
+      if (!file) return null; // ファイルがない場合はスキップ
+      const storageRef = ref(storage, `${postId}/${i}`);
+      await uploadBytes(storageRef, file);
+      return getDownloadURL(ref(storage, `${postId}/${i}`));
+    });
+
+    const urls = await Promise.all(uploadTasks);
+    return urls.filter(url => url !== null);
+  };
+
+  // const uploadPanels = async(postid: string) => {
+  //   let urls:string[] = []
+  //   files.map(async(file:any, i:number) => {
+  //     const storageRef = ref(storage, `${postid}/${i}`);
+  //     await uploadBytes(storageRef, file)
+  //     const url = await getDownloadURL(ref(storage, `${postid}/${i}`))
+  //     urls.push(url)
+  //     console.log(url)
+  //   })
+  //   return urls
+  // }
+
+  console.log(files)
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    const postid = uuidv4()
+    setIsLoading(true)
+    const postId = uuidv4()
 
-    // 画像をアップロードしURLを取得
-    const urls = await uploadPanels(postid)
+    setPostId(postId)
 
-    // const res = await fetch(`${process.env.SURVER_URL}/api/post`,{
+    //画像をアップロードしURLを取得
+    // const urls = await uploadPanels(postId)
+    // console.log(urls)
+
+    // const res = await fetch(`http://localhost:3000/api/post`, {
     //   method: "POST",
     //   headers: {
     //     "Content-Type": "application/json",
@@ -60,11 +80,21 @@ const Step1 = ({ setStep }: { setStep: any }) => {
     //   body: JSON.stringify({
     //     title: title,
     //     urls: urls,
-    //     postid: postid,
-    //     user: userId,
+    //     postId: postId,
+    //     userId: userId,
     //   }),
     // })
+
+    // const comicTexts = await res.json()
+
+    // setYonkoma(comicTexts)
+
+    setIsLoading(true)
     setStep(1)
+  }
+
+  if (isLoading) {
+    return <p>loading...</p>
   }
 
   return (
@@ -96,15 +126,15 @@ const Step1 = ({ setStep }: { setStep: any }) => {
                 name={`panel${i}`}
                 onChange={(e) => handleImageChange(e, i)}
                 className="hidden"
-                accept="image/png, image/jpg, image/jpeg"
+                accept="image/png, image/jpg, image/jpeg, image/webp"
               />
             </div>
           ))}
         </div>
-        
+
         <div className="w-max mx-auto my-10">
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="bg-[#F6501C] px-4 py-2 border-2 border-[#F6501C] rounded-lg cursor-pointer hover:bg-white hover:text-[#F6501C]"
           >決定</Button>
         </div>
