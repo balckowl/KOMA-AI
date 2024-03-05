@@ -17,8 +17,8 @@ import TopFooter from "./components/top/topFooter";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "KOM-4i" },
+    { name: "description", content: "4コマ漫画をAIで作れるサイト" },
   ];
 };
 

@@ -1,14 +1,15 @@
 import Header from "./components/base/header"
 import Trend from "./components/home/trend"
 import New from "./components/home/new"
-import Works from "./components/home/works"
+import CreateBtn from "./components/home/createBtn"
+
 const Home = () => {
   return (
     <div className="relative">
       <Header />
       <Trend />
       <New />
-      <Works />
+      <CreateBtn />
 
       {/* footer */}
       <div className="text-center">

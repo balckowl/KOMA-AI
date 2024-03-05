@@ -1,12 +1,20 @@
 import { useState } from "react"
+import { useParams } from "@remix-run/react"
 import Header from "./components/base/header";
 import { Link } from "react-router-dom";
 import { Button } from "~/components/ui/button";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
+
 const YonkomaId = () => {
   const [author] = useState<string>("kusira");
+  const [authorIcon] = useState<string>("https://placeholder.pics/svg/300");
   const [title] = useState<string>("ちぴちぴ");
   const [likes, setLikes] = useState<number>(0);
   const [isLike, setIsLike] = useState<boolean>(false);
+
   const [yonkoma, setYonkoma] = useState([
     { panel: "おはよう", image: "/images/create/no-image.png" },
     { panel: "こんにちは", image: "/images/create/no-image.png" },
@@ -14,8 +22,9 @@ const YonkomaId = () => {
     { panel: "さよなら", image: "/images/create/no-image.png" },
   ]);
 
+  const { id} = useParams()
+  console.log(id)
   const clickLike = () => {
-    console.log(isLike)
     setLikes((prev) => prev + (isLike ? -1 : 1));
     setIsLike(!isLike);
   }
@@ -25,7 +34,13 @@ const YonkomaId = () => {
       <Header />
       <div className="container">
         <div className="mt-20 mb-10 w-max mx-auto">
-          <p className="mb-1 ml-1">{author}</p>
+          <div className="flex items-center gap-2 mb-2">
+            <Avatar className="w-[42px] h-[42px]">
+              <AvatarImage src={authorIcon} />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <p className="mb-1 ml-1 text-xl">{author}</p>
+          </div>
           <div className="border-black border-[2px] w-max p-[50px] h-[500px] overflow-y-scroll mb-4">
 
             <p className="border-black border-[2px] p-5 mb-5 text-center text-xl font-bold">{title}</p>
@@ -43,16 +58,20 @@ const YonkomaId = () => {
 
           {/* いいねボタン */}
           <div
-            className="flex gap-4 ml-[40px] cursor-pointer"
+            className="flex gap-4 cursor-pointer items-center"
             onClick={() => clickLike()}
           >
-            <div className={`w-[30px] h-[30px] border-2 ${isLike && "bg-pink-500"}`}></div>
-            <p className="h-[30px] flex items-center select-none">{likes}</p>
+            {isLike ?
+              <FontAwesomeIcon icon={solidHeart} className="text-[32px] text-red-500" />
+              :
+              <FontAwesomeIcon icon={regularHeart} className="text-[32px] " />
+            }
+            <p className="h-[32px] flex items-center select-none text-xl">{likes}</p>
           </div>
         </div>
         <div className="w-max mx-auto">
           <Link to="/yonkoma">
-            <Button 
+            <Button
               className="bg-[#F6511D] px-4 py-2 border-2 border-[#F6511D] rounded-lg cursor-pointer hover:bg-white hover:text-[#F6511D]"
             >一覧に戻る</Button>
           </Link>

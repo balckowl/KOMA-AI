@@ -7,12 +7,16 @@ import {
 } from "~/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import { Link } from "@remix-run/react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 
 const New = () => {
   const newsYonkoma = Array(10).fill(
     {
       title: "たいとる",
       author: "kusira",
+      authorIcon: "https://placeholder.pics/svg/200x112",
       likes: 0,
       panels: [
         "https://placeholder.pics/svg/200x112",
@@ -46,7 +50,13 @@ const New = () => {
           {newsYonkoma.map((new_manga, i) => (
             <CarouselItem key={i} className="md:basis-1/3 lg:basis-1/4">
               <Link className="p-1" to="/">
-                <p className="mb-1 ml-1">{newsYonkoma[i].author}</p>
+                <div className="flex items-center gap-2 mb-2">
+                  <Avatar className="w-[34px] h-[34px]">
+                    <AvatarImage src={newsYonkoma[i].authorIcon}/>
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <p className="mb-1 ml-1">{newsYonkoma[i].author}</p>
+                </div>
                 {/* 漫画ページ */}
                 <div className="w-auto h-max border-black border-[1px] border-b-0 py-4" style={{ borderImage: "linear-gradient(to bottom, black, transparent) 1" }}>
                   <div className="w-max mx-auto">
@@ -64,9 +74,9 @@ const New = () => {
                 </div>
 
                 {/* いいね数 */}
-                <div className="flex gap-4 ml-[40px]">
-                  <div className="w-[30px] h-[30px] border-2"></div>
-                  <p className="h-[30px] flex items-center">{newsYonkoma[i].likes}</p>
+                <div className="flex gap-4 p-2 items-center">
+                  <FontAwesomeIcon icon={faHeart} className="text-[24px] text-red-500" />
+                  <p className="h-[24px] flex items-center">{newsYonkoma[i].likes}</p>
                 </div>
               </Link>
             </CarouselItem>

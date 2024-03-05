@@ -48,20 +48,6 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
     return urls.filter(url => url !== null);
   };
 
-  // const uploadPanels = async(postid: string) => {
-  //   let urls:string[] = []
-  //   files.map(async(file:any, i:number) => {
-  //     const storageRef = ref(storage, `${postid}/${i}`);
-  //     await uploadBytes(storageRef, file)
-  //     const url = await getDownloadURL(ref(storage, `${postid}/${i}`))
-  //     urls.push(url)
-  //     console.log(url)
-  //   })
-  //   return urls
-  // }
-
-  console.log(files)
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
@@ -71,25 +57,25 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
 
     //画像をアップロードしURLを取得
     //開発時はここからコメントアウト
-    // const urls = await uploadPanels(postId)
-    // console.log(urls)
+    const urls = await uploadPanels(postId)
+    console.log(urls)
 
-    // const res = await fetch(`http://localhost:3000/api/post`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     title: title,
-    //     urls: urls,
-    //     postId: postId,
-    //     userId: userId,
-    //   }),
-    // })
+    const res = await fetch(`http://localhost:3000/api/post`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        urls: urls,
+        postId: postId,
+        userId: userId,
+      }),
+    })
 
-    // const comicTexts = await res.json()
+    const comicTexts = await res.json()
 
-    // setYonkoma(comicTexts)
+    setYonkoma(comicTexts)
     //開発時はここまでをコメントアウト
 
     setTimeout(() => {

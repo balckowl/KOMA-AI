@@ -21,13 +21,16 @@ const Create = () => {
   return (
     <div className="relative h-[100vh]">
       <Header />
-      {step === 0 ? (
-        <Step1 setStep={setStep} setYonkoma={setYonkoma} setPostId={setPostId}/>
-      ) : step === 1 ? (
-        <Step2 setStep={setStep} yonkoma={yonkoma} setYonkoma={setYonkoma} postId={postId}/>
-      ) : step === 2 && (
-        <Step3 setStep={setStep} />
-      )}
+      <div className="container">
+
+        {step === 0 ? (
+          <Step1 setStep={setStep} setYonkoma={setYonkoma} setPostId={setPostId} />
+        ) : step === 1 ? (
+          <Step2 setStep={setStep} yonkoma={yonkoma} setYonkoma={setYonkoma} postId={postId} />
+        ) : step === 2 && (
+          <Step3 />
+        )}
+      </div>
 
       {/* footer */}
       <div className="absolute bottom-3 w-full text-center">
