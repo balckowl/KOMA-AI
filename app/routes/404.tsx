@@ -7,12 +7,12 @@ const NotFound = () => {
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
         <div className="flex flex-col items-center">
 
-        <Link to="/" className="mb-1">
-          <div className="flex items-center gap-4 h-[60px]">
-            <img src="images/logo/komai_logo.png" alt="logo" className="w-auto h-[50px] object-fill"/>
-            <h1 className="flex h-full items-center text-4xl font-bold">KOM-4i</h1>
-          </div>
-        </Link>
+          <Link to="/" className="mb-1">
+            <div className="flex items-center gap-4 h-[60px]">
+              <img src="images/logo/komai_logo.png" alt="logo" className="w-auto h-[50px] object-fill" />
+              <h1 className="flex h-full items-center text-4xl font-bold">KOM-4i</h1>
+            </div>
+          </Link>
 
 
           <p className="mb-4 text-sm font-semibold uppercase text-[#f6511d] md:text-base">That’s a 404</p>
@@ -25,6 +25,11 @@ const NotFound = () => {
             </Button >
           </Link>
         </div>
+      </div>
+
+      {/* footer */}
+      <div className="absolute bottom-0 w-full text-center">
+        <small> ©2024 created by よんこまくりえいたーず</small>
       </div>
     </div>
   )

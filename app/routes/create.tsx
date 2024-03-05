@@ -29,7 +29,8 @@ const Create = () => {
         <Step3 setStep={setStep} />
       )}
 
-      <div className="absolute bottom-0 w-full text-center">
+      {/* footer */}
+      <div className="absolute bottom-3 w-full text-center">
         <small> ©2024 created by よんこまくりえいたーず</small>
       </div>
     </div>

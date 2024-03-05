@@ -10,7 +10,7 @@ const Header = () => {
       <div className="container flex justify-between items-center">
         <Link to="/">
           <div className="flex items-center gap-4 h-[60px]">
-            <img src="images/logo/komai_logo.png" alt="logo" className="w-auto h-[50px] object-fill"/>
+            <img src="/images/logo/komai_logo.png" alt="logo" className="w-auto h-[50px] object-fill"/>
             <h1 className="flex h-full items-center text-4xl font-bold">KOM-4i</h1>
           </div>
         </Link>
