@@ -13,7 +13,7 @@ const How = () => {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
-          delay: 0.5,
+          delay: 1,
           duration: 0.8,
           ease: "easeOut"
         }}
@@ -37,7 +37,7 @@ const How = () => {
             <p>3. KOM-4iが画像にあった4コマ漫画を作ってくれます</p>
             <p>4. 完成した4コマ漫画を世界中に公開しよう</p>
           </div>
-          <div className="flex justify-end">
+          <div className="flex">
             <Link to="/sign-in">
               <Button className="bg-[#e2aa1d] px-4 py-2 border-2 border-[#e2aa1d] rounded-lg cursor-pointer hover:bg-white hover:text-[#e2aa1d]">はじめる</Button>
             </Link>

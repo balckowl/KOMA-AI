@@ -15,8 +15,8 @@ const Tech = () => {
               <p className="mb-2 lg:text-[18px]">・フロントエンド</p>
               <div className="flex gap-4 flex-wrap items-center mb-8">
                 <img src="/images/top/tech/bun.svg" alt="bun" className="w-[60px] h-[60px] object-fit" />
-                <img src="/images/top/tech/vitejs.svg" alt="vite" className="w-[60px] h-[60px] object-fit" />
                 <img src="/images/top/tech/remix-icon.svg" alt="remix" className="w-[60px] h-[60px] object-fit" />
+                <img src="/images/top/tech/vitejs.svg" alt="vite" className="w-[60px] h-[60px] object-fit" />
                 <img src="/images/top/tech/tailwindcss-icon.svg" alt="tailwind" className="w-[90px] h-[80px] object-fit" />
                 <img src="/images/top/tech/typescript-icon.svg" alt="typescript" className="w-[60px] h-[60px] object-fit" />
                 <img src="/images/top/tech/framer-motion-icon.png" alt="framer-motion" className="w-[60px] h-[60px] object-fit" />
@@ -33,6 +33,7 @@ const Tech = () => {
                 <img src="/images/top/tech/typescript-icon.svg" alt="typescript" className="w-[60px] h-[60px] object-fit" />
                 <img src="/images/top/tech/langchain.png" alt="langchain" className="w-[90px] h-[60px] object-fit" />
                 <img src="/images/top/tech/google-gemini.svg" alt="gemini" className="w-[140px] h-[60px] object-fit" />
+                <img src="/images/top/tech/firebase.svg" alt="firebase" className="w-[60px] h-[60px] object-fit" />
                 <img src="/images/top/tech/prisma.svg" alt="prisuma" className="w-[60px] h-[60px] object-fit" />
                 <img src="/images/top/tech/supabase-icon.svg" alt="supabase" className="w-[60px] h-[60px] object-fit" />
                 <img src="/images/top/tech/postgresql.svg" alt="postgresql" className="w-[60px] h-[60px] object-fit" />

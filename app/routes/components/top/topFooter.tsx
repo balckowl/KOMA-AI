@@ -6,7 +6,7 @@ const TopFooter = () => {
       <div className="flex mb-12 pt-20 border-black border-t-[1px] justify-around">
         <div className="flex flex-col items-center w-[20%] h-full">
           <Link className="p-1" to="/">
-            <img src="images/logo/komai_logo.png" alt="logo" className="object-fill mb-4" />
+            <img src="images/logo/komai_logo.png" alt="logo" className="w-[160px] mb-4" />
             <p className="text-center w-full">KOM-4i</p>
           </Link>
         </div>
