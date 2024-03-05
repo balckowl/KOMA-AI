@@ -9,16 +9,23 @@ import Step3 from "./components/create/step3";
 
 const Create = () => {
   const [step, setStep] = useState<number>(0);
+  const [yonkoma, setYonkoma] = useState([
+    { panel: "おはよう", image: "/images/create/no-image.png" },
+    { panel: "こんにちは", image: "/images/create/no-image.png" },
+    { panel: "こんばんは", image: "/images/create/no-image.png" },
+    { panel: "さよなら", image: "/images/create/no-image.png" },
+  ])
+  const [postId, setPostId] = useState<string>("")
 
-  
+
   return (
     <div className="relative h-[100vh]">
       <Header />
-      { step === 0 ? (
-        <Step1 setStep={setStep} />
-        ) : step === 1 ? (
-        <Step2 setStep={setStep} />
-        ) : step === 2 && (
+      {step === 0 ? (
+        <Step1 setStep={setStep} setYonkoma={setYonkoma} setPostId={setPostId}/>
+      ) : step === 1 ? (
+        <Step2 setStep={setStep} yonkoma={yonkoma} setYonkoma={setYonkoma} postId={postId}/>
+      ) : step === 2 && (
         <Step3 setStep={setStep} />
       )}
 
