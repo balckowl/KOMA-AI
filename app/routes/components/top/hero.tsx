@@ -1,7 +1,9 @@
+import { useUser } from "@clerk/remix";
 import { Link } from "@remix-run/react"
 import { Button } from "~/components/ui/button"
 
 const Hero = () => {
+  const { isLoaded } = useUser();
   return (
     <div>
       <div className="relative w-full h-[calc(100vh-70px)] mb-12">
@@ -11,7 +13,7 @@ const Hero = () => {
             <h2 className="text-white font-bold text-2xl mb-4">たいとるたいとるたいとる</h2>
             <p className="text-white mb-8">Lorem ipsum, dolor sit amet consectetur adipisicing elit. A aliquid similique, neque velit minima corrupti! Eius consequuntur cumque voluptatibus dignissimos cupiditate sapiente repellendus quis esse sint, facere excepturi officiis dicta.</p>
             <div className="w-full flex">
-              <Link to="/sign-in">
+              <Link to={isLoaded ? "/home" : "/sign-in" }>
                 <Button className="bg-transparent border-2 w-max hover:bg-transparent hover:opacity-80">はじめる</Button>
               </Link>
             </div>

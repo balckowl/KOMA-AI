@@ -10,6 +10,7 @@ import { Link } from "@remix-run/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
+import { Button } from "~/components/ui/button";
 
 const New = () => {
   const newsYonkoma = Array(10).fill(
@@ -43,7 +44,6 @@ const New = () => {
             delay: 2654,
           }),
         ]}
-        className="mb-20"
       >
         <CarouselContent>
 
@@ -52,7 +52,7 @@ const New = () => {
               <Link className="p-1" to="/">
                 <div className="flex items-center gap-2 mb-2">
                   <Avatar className="w-[34px] h-[34px]">
-                    <AvatarImage src={newsYonkoma[i].authorIcon}/>
+                    <AvatarImage src={newsYonkoma[i].authorIcon} />
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
                   <p className="mb-1 ml-1">{newsYonkoma[i].author}</p>
@@ -75,7 +75,9 @@ const New = () => {
 
                 {/* いいね数 */}
                 <div className="flex gap-4 p-2 items-center">
-                  <FontAwesomeIcon icon={faHeart} className="text-[24px] text-red-500" />
+                  <div className="text-[24px] text-red-500">
+                    <FontAwesomeIcon icon={faHeart} />
+                  </div>
                   <p className="h-[24px] flex items-center">{newsYonkoma[i].likes}</p>
                 </div>
               </Link>
@@ -86,6 +88,12 @@ const New = () => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
+
+      <div className="flex w-full justify-center mt- mb-20">
+        <Link to="/news">
+          <Button className="bg-[#e2aa1d] px-4 py-2 border-2 border-[#e2aa1d] rounded-lg cursor-pointer hover:bg-white hover:text-[#e2aa1d]">もっと見る</Button>
+        </Link>
+      </div>
     </div>
 
   )

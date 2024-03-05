@@ -1,9 +1,12 @@
 import { Button } from "~/components/ui/button"
 import { motion } from "framer-motion"
 import { Link } from "@remix-run/react"
+import { useUser } from "@clerk/remix";
 
 
 const How = () => {
+  const { isLoaded } = useUser();
+
   return (
     <div className="container flex sm:justify-around  mb-12">
     
@@ -38,7 +41,7 @@ const How = () => {
             <p>4. 完成した4コマ漫画を世界中に公開しよう</p>
           </div>
           <div className="flex">
-            <Link to="/sign-in">
+            <Link to={isLoaded ? "/home" : "/sign-in" }>
               <Button className="bg-[#e2aa1d] px-4 py-2 border-2 border-[#e2aa1d] rounded-lg cursor-pointer hover:bg-white hover:text-[#e2aa1d]">はじめる</Button>
             </Link>
           </div>

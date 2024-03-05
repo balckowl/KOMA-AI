@@ -61,11 +61,13 @@ const YonkomaId = () => {
             className="flex gap-4 cursor-pointer items-center"
             onClick={() => clickLike()}
           >
-            {isLike ?
-              <FontAwesomeIcon icon={solidHeart} className="text-[32px] text-red-500" />
-              :
-              <FontAwesomeIcon icon={regularHeart} className="text-[32px] " />
-            }
+            <div className="text-[32px]">
+              {isLike ?
+                <FontAwesomeIcon icon={solidHeart} className="text-red-500" />
+                :
+                <FontAwesomeIcon icon={regularHeart}/>
+              }
+            </div>
             <p className="h-[32px] flex items-center select-none text-xl">{likes}</p>
           </div>
         </div>

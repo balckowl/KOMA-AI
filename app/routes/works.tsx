@@ -63,7 +63,9 @@ const Works = () => {
               <div className="flex justify-between mt-2">
                 {/* いいね数 */}
                 <div className="flex gap-4 p-2 items-center">
-                  <FontAwesomeIcon icon={faHeart} className="text-[24px] text-red-500" />
+                  <div className="text-[24px] text-red-500">
+                    <FontAwesomeIcon icon={faHeart} />
+                  </div>
                   <p className="h-[24px] flex items-center">{trendsYonkoma[i].likes}</p>
                 </div>
 
