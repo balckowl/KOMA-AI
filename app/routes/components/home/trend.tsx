@@ -24,7 +24,7 @@ const Trend = () => {
   );
 
   return (
-    <div className="container">
+    <div className="container mt-12">
       {/*  heading */}
       <div className="w-max mb-12">
         <p>・人気の作品</p>
@@ -63,6 +63,12 @@ const Trend = () => {
                     </div>
                   </div>
                 </div>
+                {/* いいね数 */}
+                <div className="flex gap-4 ml-[40px]">
+                  <div className="w-[30px] h-[30px] border-2"></div>
+                  <p className="h-[30px] flex items-center">{trendsYonkoma[i].likes}</p>
+                </div>
+
               </Link>
             </CarouselItem>
           ))}

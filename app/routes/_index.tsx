@@ -5,7 +5,7 @@ import { redirect, type MetaFunction } from "@remix-run/node";
 // framer-motion
 import { motion } from 'framer-motion'
 // zustand
-import { useKomaStore } from "~/zustand/komaStore";
+import { useKomaStore } from "./zustand/komaStore"
 // components
 import Header from "./components/base/header";
 import Hero from "./components/top/hero";

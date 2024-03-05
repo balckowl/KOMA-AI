@@ -71,25 +71,25 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
 
     //画像をアップロードしURLを取得
     //開発時はここからコメントアウト
-    const urls = await uploadPanels(postId)
-    console.log(urls)
+    // const urls = await uploadPanels(postId)
+    // console.log(urls)
 
-    const res = await fetch(`http://localhost:3000/api/post`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: title,
-        urls: urls,
-        postId: postId,
-        userId: userId,
-      }),
-    })
+    // const res = await fetch(`http://localhost:3000/api/post`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     title: title,
+    //     urls: urls,
+    //     postId: postId,
+    //     userId: userId,
+    //   }),
+    // })
 
-    const comicTexts = await res.json()
+    // const comicTexts = await res.json()
 
-    setYonkoma(comicTexts)
+    // setYonkoma(comicTexts)
     //開発時はここまでをコメントアウト
 
     setTimeout(() => {
@@ -105,17 +105,7 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="mt-10">
-        {/* titleを入力する
-        <div className="w-max mx-auto my-10 text-xl">
-          <input
-            type="text"
-            id="title"
-            name="title"
-            placeholder="タイトル"
-            onChange={(e) => setTitle(e.target.value)}
-            className="border-b-[1px] border-black rounded-md p-1 focus:outline-none focus:border-b-[2px] focus:border-[#f24e1e]"
-          />
-        </div> */}
+
         {/* imgを入力するbox */}
         <div className="flex flex-wrap gap-10 w-[500px] mx-auto border-2 border-black p-6">
           {[0, 1, 2, 3].map((_, i) => (

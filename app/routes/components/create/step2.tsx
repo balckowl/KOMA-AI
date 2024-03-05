@@ -39,20 +39,20 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
   return (
     <div className="container">
       <div>
-        <form onSubmit={handlePost} className="flex justify-center flex-col items-center mt-3">
+        <form onSubmit={handlePost} className="flex justify-center flex-col items-center mt-20">
           <div className="border-black border-[2px] w-max p-[50px] h-[500px] overflow-y-scroll mb-4">
-            <h1 className="border-black border-[2px] p-5 mb-5">
+            <h3 className="border-black border-[2px] p-5 mb-5">
               <input type="text" className="focus:outline-none text-black text-[20px]" placeholder="タイトルを決めよう" value={title} onChange={(e) => setTitle(e.target.value)} />
-            </h1>
+            </h3>
             {yonkoma.map((koma: any, index: number) => (
               <div className="p-3 border-black border-[2px] mb-5" key={index}>
                 <div className="flex justify-between items-center mb-3 gap-3">
                   {selectBtnIdx === index ? (
                     <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} className="w-full focus:outline-none" placeholder="このコマに合うテキストを入力してください。"/>
                   ) : (
-                    <h2>
+                    <p>
                       {koma.panel}
-                    </h2>
+                    </p>
                   )}
                   {selectBtnIdx === index ?
                     <Button type="button" onClick={() => updatePanel(index)}>確定する</Button> :
