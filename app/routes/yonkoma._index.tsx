@@ -28,7 +28,7 @@ const Yonkoma = () => {
         <div className="w-max mb-12">
           <p className="text">・一覧</p>
           <div className="w-full h-[4px] bg-[#00a5ec]"></div>
-          <h2 className="text-4xl font-bold">4コマ漫画</h2>
+          <h2 className="text-4xl font-bold">ALL</h2>
         </div>
 
         <div className="flex gap-8 flex-wrap w-10/12 mx-auto justify-center xl:justify-start">

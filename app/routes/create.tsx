@@ -19,7 +19,7 @@ const Create = () => {
 
 
   return (
-    <div className="relative h-[100vh]">
+    <div className="relative min-h-[100vh] h-max">
       <Header />
       <div className="container">
 
@@ -33,7 +33,7 @@ const Create = () => {
       </div>
 
       {/* footer */}
-      <div className="absolute bottom-3 w-full text-center">
+      <div className="absolute bottom-0 w-full text-center">
         <small> ©2024 created by よんこまくりえいたーず</small>
       </div>
     </div>

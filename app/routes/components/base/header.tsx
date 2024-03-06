@@ -50,7 +50,7 @@ const Header = ({signIn=false}:{signIn?:boolean}) => {
                   <Link to="/yonkoma">
                     <li className="border-b-[1px] border-black py-4">
                       <div className="w-max cursor-pointer hover:opacity-80 transition-all">
-                        <p className="text-xl pl-2">📜 4コマ</p>
+                        <p className="text-xl pl-2">📜 一覧</p>
                       </div>
                     </li>
                   </Link>
