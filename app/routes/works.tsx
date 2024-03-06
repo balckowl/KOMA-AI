@@ -36,7 +36,7 @@ const Works = () => {
         {/*  heading */}
         <div className="w-max my-12">
           <p className="text">・自分の作品</p>
-          <div className="w-full h-[4px] bg-[#ffbe20]"></div>
+          <div className="w-full h-[4px] bg-[#7fb800]"></div>
           <h2 className="text-4xl font-bold">MY WORKS</h2>
         </div>
         <div className="flex gap-8 flex-wrap w-10/12 mx-auto justify-center xl:justify-start">
