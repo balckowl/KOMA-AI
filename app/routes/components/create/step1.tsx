@@ -5,7 +5,7 @@ import { storage } from "~/lib/firebase/client"
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
 import { useAuth } from "@clerk/remix";
-import Loading from "../base/loading";
+import Generating from "../base/genarating";
 
 const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: any, setPostId: any }) => {
   const [files, setFiles] = useState<any>([
@@ -98,35 +98,37 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
   }
 
   if (isLoading) {
-    return <Loading />
+    return <Generating />
   }
 
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="mt-10">
-
         {/* imgを入力するbox */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 justify-center w-full max-w-[800px] mx-auto border-2 border-black p-6 pb-10 bg-gray-50">
-          {[0, 1, 2, 3].map((_, i) => (
-            <div key={i} className="w-full">
-              <p className="text-xl ml-1">{ i+1 }.</p>
-                <div className="bg-white w-[100%]">
-                  <img
-                    src={previews[i]} alt="panel"
-                    onClick={() => document.getElementById(`file-input${i}`)?.click()}
-                    className="cursor-pointer border-[1px] border-black object-cover aspect-[16/9] w-[100%]"
-                    />
-                </div>
-              <input
-                type="file"
-                id={`file-input${i}`}
-                name={`panel${i}`}
-                onChange={(e) => handleImageChange(e, i)}
-                className="hidden"
-                accept="image/png, image/jpg, image/jpeg, image/webp"
-              />
-            </div>
-          ))}
+        <div className="max-w-[800px] mx-auto">
+          <p className="mb-1">画像を入力してください</p>
+          <div  className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 justify-center w-full max-w-[800px] mx-auto border-2 border-black p-6 pb-10 bg-gray-50">
+            {[0, 1, 2, 3].map((_, i) => (
+              <div key={i} className="w-full">
+                <p className="text-xl ml-1">{ i+1 }.</p>
+                  <div className="bg-white w-[100%]">
+                    <img
+                      src={previews[i]} alt="panel"
+                      onClick={() => document.getElementById(`file-input${i}`)?.click()}
+                      className="cursor-pointer border-[1px] border-black object-cover aspect-[16/9] w-[100%]"
+                      />
+                  </div>
+                <input
+                  type="file"
+                  id={`file-input${i}`}
+                  name={`panel${i}`}
+                  onChange={(e) => handleImageChange(e, i)}
+                  className="hidden"
+                  accept="image/png, image/jpg, image/jpeg, image/webp"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="w-max mx-auto pt-10 pb-20">

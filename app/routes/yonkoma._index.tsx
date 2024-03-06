@@ -3,7 +3,7 @@ import Header from "./components/base/header"
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-
+import { motion } from "framer-motion"
 const Yonkoma = () => {
   const newsYonkoma = Array(10).fill(
     {
@@ -33,7 +33,17 @@ const Yonkoma = () => {
 
         <div className="flex gap-8 flex-wrap w-10/12 mx-auto justify-center xl:justify-start">
         {newsYonkoma.map((new_manga, i) => (
-            <div key={i} className="">
+            <motion.div 
+              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.1 + 0.2*i,
+                duration: 0.6,
+                ease: "easeOut"
+              }}
+              key={i}
+            >
               <Link className="p-1" to="/yonkoma/1">
                 <div className="flex items-center gap-2 mb-2">
                   <Avatar className="w-[34px] h-[34px]">
@@ -65,7 +75,7 @@ const Yonkoma = () => {
                   <p className="h-[24px] flex items-center">{newsYonkoma[i].likes}</p>
                 </div>
               </Link>
-            </div>
+            </motion.div>
           ))}
 
         </div>

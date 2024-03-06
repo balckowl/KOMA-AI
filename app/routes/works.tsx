@@ -10,9 +10,10 @@ import {
 import { Button } from "~/components/ui/button"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { motion } from "framer-motion"
 
 const Works = () => {
-  const trendsYonkoma = Array(10).fill(
+  const myYonkoma = Array(10).fill(
     {
       title: "たいとる",
       author: "kusira",
@@ -39,21 +40,32 @@ const Works = () => {
           <div className="w-full h-[4px] bg-[#7fb800]"></div>
           <h2 className="text-4xl font-bold">MY WORKS</h2>
         </div>
+        
         <div className="flex gap-8 flex-wrap w-10/12 mx-auto justify-center xl:justify-start">
-          {trendsYonkoma.map((trend, i) => (
-            <div key={i}>
-              <p className="mb-1 ml-1">{trendsYonkoma[i].author}</p>
+          {myYonkoma.map((trend, i) => (
+            <motion.div 
+              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.1 + 0.2*i,
+                duration: 0.6,
+                ease: "easeOut"
+              }}
+              key={i}
+            >
+              <p className="mb-1 ml-1">{myYonkoma[i].author}</p>
               {/* 漫画ページ */}
               <div className="w-auto h-max border-black border-[1px] p-4">
                 <div className="w-max mx-auto">
                   <p className="text-center mb-2 relative z-10 border-black border-[1px]">
-                    {trendsYonkoma[i].title}
+                    {myYonkoma[i].title}
                   </p>
 
                   {[0, 1, 2, 3].map((j, _) => (
                     <div key={j}>
                       <div className="mx-auto w-max relative z-10">
-                        <img src={trendsYonkoma[i].panels[j]} className="mb-2" />
+                        <img src={myYonkoma[i].panels[j]} className="mb-2" />
                       </div>
                     </div>
                   ))}
@@ -66,7 +78,7 @@ const Works = () => {
                   <div className="text-[24px] text-red-500">
                     <FontAwesomeIcon icon={faHeart} />
                   </div>
-                  <p className="h-[24px] flex items-center">{trendsYonkoma[i].likes}</p>
+                  <p className="h-[24px] flex items-center">{myYonkoma[i].likes}</p>
                 </div>
 
                 {/* 削除ボタン */}
@@ -91,7 +103,7 @@ const Works = () => {
                 </Dialog>
 
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
