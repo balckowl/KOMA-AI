@@ -6,11 +6,17 @@ import {
   CarouselPrevious,
 } from "~/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
-import { Link } from "@remix-run/react";
+import { Link, json } from "@remix-run/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { Button } from "~/components/ui/button";
+
+export const loader = async () => {
+  const res = await fetch("http://localhost:3000/api/new")
+  const newData = await res.json()
+  return json( newData );
+};
 
 const New = () => {
   const newsYonkoma = Array(10).fill(
@@ -48,7 +54,7 @@ const New = () => {
         <CarouselContent>
 
           {newsYonkoma.map((new_manga, i) => (
-            <CarouselItem key={i} className="md:basis-1/3 lg:basis-1/4">
+            <CarouselItem key={i} className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
               <Link className="p-1" to="/">
                 <div className="flex items-center gap-2 mb-2">
                   <Avatar className="w-[34px] h-[34px]">

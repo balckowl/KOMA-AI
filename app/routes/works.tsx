@@ -11,6 +11,15 @@ import { Button } from "~/components/ui/button"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { motion } from "framer-motion"
+import { LoaderFunctionArgs, json } from "@remix-run/node";
+import { getAuth } from "@clerk/remix/ssr.server";
+
+export const loader = async (args:LoaderFunctionArgs) => {
+  const { userId } = await getAuth(args);
+  const res = await fetch(`http://localhost:3000/api/works/${userId}`)
+  const worksData = await res.json()
+  return json( worksData );
+};
 
 const Works = () => {
   const myYonkoma = Array(10).fill(

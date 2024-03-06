@@ -4,6 +4,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { motion } from "framer-motion"
+import { json } from "@remix-run/node";
+
+export const loader = async () => {
+  const res = await fetch(`http://localhost:3000/api/post`)
+  const allYonkomaData = await res.json()
+  return json( allYonkomaData );
+};
+
 const Yonkoma = () => {
   const newsYonkoma = Array(10).fill(
     {

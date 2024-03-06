@@ -7,6 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
+import { json } from "@remix-run/node";
+
+export const loader = async ({params}:{params:{id:string}}) => {
+  const {id} = params;
+  const res = await fetch(`http://localhost:3000/api/post/${id}`)
+  const yonkomaData = await res.json()
+  return json( yonkomaData );
+};
 
 const YonkomaId = () => {
   const [author] = useState<string>("kusira");
@@ -22,7 +30,7 @@ const YonkomaId = () => {
     { panel: "さよなら", image: "/images/create/no-image.png" },
   ]);
 
-  const { id} = useParams()
+  const { id } = useParams()
   console.log(id)
   const clickLike = () => {
     setLikes((prev) => prev + (isLike ? -1 : 1));
