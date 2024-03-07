@@ -9,6 +9,7 @@ import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { json } from "@remix-run/node";
 
+
 export const loader = async ({params}:{params:{id:string}}) => {
   const {id} = params;
   const res = await fetch(`http://localhost:3000/api/post/${id}`)

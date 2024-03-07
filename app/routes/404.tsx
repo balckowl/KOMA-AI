@@ -1,5 +1,18 @@
+import { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react"
 import { Button } from "~/components/ui/button"
+
+export const meta: MetaFunction = ({ params, location, data }) => {
+  return [
+    { title: "KOM-4i" },
+    { name: "description", content: "4コマ漫画をAIで作れるサイト" },
+    { property: "og:url", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/404`},
+    { property: "og:title", content: "404 page not found | KOM-4i"},
+    { property: "og:image", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/images/top/tech/bun.svg`},
+    { property: "og:site_name", content: "404 page not found"},
+  ]
+};
+
 
 const NotFound = () => {
   return (
@@ -20,7 +33,7 @@ const NotFound = () => {
 
           <p className="mb-12 max-w-screen-md text-center text-gray-500 md:text-lg">お探しのページは存在しません</p>
           <Link to="/">
-            <Button className="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">
+            <Button className="inline-block rounded-lg bg-gray-200 px-8 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">
               ホームに戻る
             </Button >
           </Link>

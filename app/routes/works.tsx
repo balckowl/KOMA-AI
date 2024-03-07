@@ -11,12 +11,23 @@ import { Button } from "~/components/ui/button"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { motion } from "framer-motion"
-import { LoaderFunctionArgs, json } from "@remix-run/node";
+import { LoaderFunctionArgs, MetaFunction, json } from "@remix-run/node";
 import { getAuth } from "@clerk/remix/ssr.server";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "KOM-4i" },
+    { name: "description", content: "4コマ漫画をAIで作れるサイト" },
+    { property: "og:url", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/works`},
+    { property: "og:title", content: "自分の作品 | KOM-4i"},
+    { property: "og:image", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/images/top/tech/bun.svg`},
+    { property: "og:site_name", content: "自分の作品一覧"},
+  ]
+};
 
 export const loader = async (args:LoaderFunctionArgs) => {
   const { userId } = await getAuth(args);
-  const res = await fetch(`http://localhost:3000/api/works/${userId}`)
+  const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/${userId}`)
   const worksData = await res.json()
   return json( worksData );
 };

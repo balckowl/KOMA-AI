@@ -12,7 +12,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 
 export const loader = async () => {
-  const res = await fetch("http://localhost:3000/api/trend")
+  const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/trend`)
   const trendData = await res.json()
   return json( trendData );
 };

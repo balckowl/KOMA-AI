@@ -19,7 +19,11 @@ export const meta: MetaFunction = () => {
   return [
     { title: "KOM-4i" },
     { name: "description", content: "4コマ漫画をAIで作れるサイト" },
-  ];
+    { property: "og:url", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}`},
+    { property: "og:title", content: "トップ | KOM-4i"},
+    { property: "og:image", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/images/top/tech/bun.svg`},
+    { property: "og:site_name", content: "トップページ"},
+  ]
 };
 
 // ログインしていない場合、sign-inページにリダイレクトする
@@ -32,7 +36,6 @@ export const meta: MetaFunction = () => {
 // }
 
 export default function Index() {
-
   return (
     <div>
       <Header />

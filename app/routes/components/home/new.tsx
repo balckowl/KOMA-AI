@@ -13,7 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { Button } from "~/components/ui/button";
 
 export const loader = async () => {
-  const res = await fetch("http://localhost:3000/api/new")
+  const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/new`)
   const newData = await res.json()
   return json( newData );
 };

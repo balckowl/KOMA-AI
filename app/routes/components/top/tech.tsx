@@ -42,8 +42,8 @@ const Tech = () => {
             <li>
               <p className="mb-2 lg:text-[18px]">・インフラ</p>
               <div className="flex gap-4 flex-wrap mb-8">
-                <img src="/images/top/tech/vercel-icon.svg" alt="vercel" className="w-[60px] h-[60px] object-fit" />
-                <img src="/images/top/tech/render-icon.png" alt="render" className="w-[60px] h-[60px] object-fit" />
+                <img src="/images/top/tech/vercel-icon.svg" alt="fly" className="w-[60px] h-[60px] object-fit" />
+                <img src="/images/top/tech/fly-icon.svg" alt="render" className="w-[60px] h-[60px] object-fit" />
 
               </div>
             </li>
