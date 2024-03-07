@@ -14,14 +14,14 @@ import Loading from "../base/loading";
 const Trend = () => {
   
   const [trendsYonkoma, setTrendsYonkoma] = useState<any>([])
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const getTrendData = async() => {
     setIsLoading(true)
     const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/trend`)
     const trendData = await res.json()
     console.log(trendData)
-    setTrendsYonkoma(trendData)
+    setTrendsYonkoma(trendData.val)
     setIsLoading(false)
   }
 
@@ -57,13 +57,13 @@ const Trend = () => {
 
         {trendsYonkoma.map((trend:any, i:number) => (
             <CarouselItem key={i} className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <Link className="p-1" to="/">
+              <Link className="p-1" to={`/yonkoma/${trend.postId}`}>
               <div className="flex items-center gap-2 mb-2">
-                  {/* <Avatar className="w-[34px] h-[34px]">
-                    <AvatarImage src={trendsYonkoma[i].authorIcon} />
+                  <Avatar className="w-[34px] h-[34px]">
+                    <AvatarImage src={trend.author.userPhotoURL} />
                     <AvatarFallback>CN</AvatarFallback>
-                  </Avatar> */}
-                  <p className="mb-1 ml-1">{trend.authorId}</p>
+                  </Avatar>
+                  <p className="mb-1 ml-1">{trend.author.userName}</p>
                 </div>
                 {/* 漫画ページ */}
                 <div className="w-auto h-max border-black border-[1px] border-b-0 py-4" style={{ borderImage: "linear-gradient(to bottom, black, transparent) 1" }}>
@@ -72,12 +72,11 @@ const Trend = () => {
                       {trend.title}
                     </p>
                     <div className="mx-auto w-max relative z-10">
-                      {/* <p>{trend.contents[0].text}</p> */}
-                      {/* <img src={trend.contents[0].imageUrl} className="mb-2" /> */}
-                      {/* <div key={i} className="mb-4 relative">
-                        <img src={trend.contents[0].imageUrl} className="mb-2 w-full h-auto" />
+                      <img src={trend.content[0].imageUrl} className="mb-2 w-[200px] h-[130px] object-cover" />
+                      <div key={i} className="mb-4 relative">
+                        <img src={trend.content[1].imageUrl} className="mb-2 w-[200px] h-[130px] object-cover h-auto" />
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
-                      </div> */}
+                      </div>
                     </div>
                   </div>
                 </div>

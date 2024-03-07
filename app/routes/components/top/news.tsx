@@ -2,9 +2,9 @@
 const News = () => {
 
   const newsDataList = [
-    {createdAt: "2020.1.1", content: "ちぴちぴちゃぱちゃぱ"},
-    {createdAt: "2020.1.1", content: "トウキョウシャンディrundev"},
-    {createdAt: "2020.1.1", content: "karakuri-web"},
+    {createdAt: "2024.3.8", content: "β版を公開しました。"},
+    {createdAt: "2024.3.9", content: "ver1.0.0を公開しました。"},
+    {createdAt: "2024.3.9", content: "バグを修正しました。"},
   ]
 
   return (
