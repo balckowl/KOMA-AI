@@ -29,28 +29,31 @@ const Home = () => {
 
     setIsLoading(true)
 
-    // const res = await fetch("http://localhost:3000/api/user", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     userId: userId,
-    //     userName: user?.fullName,
-    //     userPhoto: user?.imageUrl
-    //   })
-    // })
+    const res = await fetch("http://localhost:3000/api/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        userId: userId,
+        userName: user?.fullName,
+        userPhoto: user?.imageUrl
+      })
+    })
 
+    const data = await res.json()
     setTimeout(() => {
       setIsLoading(false)
     }, 3000)
-
-    return json({})
+    console.log(data)
+    return json(data)
   }
 
   useEffect(() => {
-    userCheck()
-  }, [])
+    if(userId) {
+      userCheck()
+    }
+  }, [userId])
 
   if (isLoading) {
     return <Loading />

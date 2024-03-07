@@ -20,11 +20,11 @@ export const meta: MetaFunction = () => {
 
 const Create = () => {
   const [step, setStep] = useState<number>(0);
-  const [yonkoma, setYonkoma] = useState([
-    { panel: "1コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", image: "/images/create/no-image.png" },
-    { panel: "2コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", image: "/images/create/no-image.png" },
-    { panel: "3コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", image: "/images/create/no-image.png" },
-    { panel: "4コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", image: "/images/create/no-image.png" },
+  const [yonkoma, setYonkoma] = useState<any>([
+    { text: "1コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", imageUrl: "/images/create/no-image.png" },
+    { text: "2コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", imageUrl: "/images/create/no-image.png" },
+    { text: "3コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", imageUrl: "/images/create/no-image.png" },
+    { text: "4コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", imageUrl: "/images/create/no-image.png" },
   ])
   const [postId, setPostId] = useState<string>("")
 
