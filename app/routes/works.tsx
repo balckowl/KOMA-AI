@@ -20,17 +20,18 @@ export const meta: MetaFunction = () => {
     { name: "description", content: "4コマ漫画をAIで作れるサイト" },
     { property: "og:url", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/works`},
     { property: "og:title", content: "自分の作品 | KOM-4i"},
-    { property: "og:image", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/images/top/tech/bun.svg`},
+    { property: "og:image", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/images/ogp/ogp.png`},
     { property: "og:site_name", content: "自分の作品一覧"},
   ]
 };
 
-export const loader = async (args:LoaderFunctionArgs) => {
-  const { userId } = await getAuth(args);
-  const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/${userId}`)
-  const worksData = await res.json()
-  return json( worksData );
-};
+// export const loader = async (args:LoaderFunctionArgs) => {
+//   const { userId } = await getAuth(args);
+//   // const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/${userId}`)
+//   const res = await fetch(`http://localhost:3000/api/post`)
+//   const worksData = await res.json()
+//   return json( worksData );
+// };
 
 const Works = () => {
   const myYonkoma = Array(10).fill(
