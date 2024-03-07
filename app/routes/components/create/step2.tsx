@@ -14,12 +14,12 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
     e.preventDefault()
 
     //投稿するロジック
-    const res = await fetch("http://localhost:3000/api/publish", {
+    const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/publish`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ title: title, yonkoma: yonkoma, postId: postId, userId: userId })
+      body: JSON.stringify({ title: title, contents: yonkoma, postId: postId, authorId: userId })
     })
 
     setStep(2)
@@ -34,7 +34,7 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
       return
     }
     yonkoma.forEach((koma: any) => {
-      if (koma.panel.trim() == "") {
+      if (koma.text.trim() == "") {
         setCanSubmit(false)
         return
       }
@@ -43,7 +43,7 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
 
   const handleChangeText = (index: number, message: string) => {
     const newYonkoma = [...yonkoma]
-    newYonkoma[index].panel = message.slice(0, 30)
+    newYonkoma[index].text = message.slice(0, 30)
     setYonkoma(newYonkoma)
     // submitできるか判定1
     setCanSubmit(true)
@@ -52,7 +52,7 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
       return
     }
     newYonkoma.forEach((koma: any) => {
-      if (koma.panel.trim() == "") {
+      if (koma.text.trim() == "") {
         setCanSubmit(false)
         return
       }
@@ -87,8 +87,8 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
                     {isFinishList[index] ? (
                       // アニメーションが終わった
                       <textarea
-                        value={koma.panel}
-                        id={`panel${index}`}
+                        value={koma.text}
+                        id={`text${index}`}
                         onChange={(e) => handleChangeText(index, e.target.value)}
                         placeholder="このコマに合うテキストを入力してください。"
                         className="w-full focus:outline-none resize-none overflow-hidden"
@@ -98,14 +98,14 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
                       // アニメーションが終わっていない
                       <div>
                         <div className="flex">
-                          {koma.panel.split("").map((word: any, jndex: number) => (
+                          {koma.text.split("").map((word: any, jndex: number) => (
                             <motion.p
                               viewport={{ once: true }}
                               initial={{ opacity: 0, y: 10 }}
                               whileInView={{ opacity: 1, y: 0 }}
                               transition={{ duration: 0.5, delay: (index==0 ? 0.5 : 0) + jndex * 0.05 }}
                               key={jndex}
-                              onAnimationComplete={() => {jndex==koma.panel.split("").length-5 && finishAnimate(index)}}
+                              onAnimationComplete={() => {jndex==koma.text.split("").length-5 && finishAnimate(index)}}
                             >{word}</motion.p>
                           ))}
                         </div>
@@ -118,7 +118,7 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
                 </div>
                 <div>
                   <img
-                    src={koma.image}
+                    src={koma.imageUrl}
                     className="aspect-[16/9] w-[100%] object-cover"
                   />
                 </div>
