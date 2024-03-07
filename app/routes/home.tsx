@@ -8,21 +8,21 @@ import { useEffect, useState } from "react"
 import Loading from "./components/base/loading"
 import { MetaFunction } from "@remix-run/node"
 
-export const meta: MetaFunction = () => {
-  return [
-    { title: "KOM-4i" },
-    { name: "description", content: "4コマ漫画をAIで作れるサイト" },
-    { property: "og:url", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/home`},
-    { property: "og:title", content: "ホーム | KOM-4i"},
-    { property: "og:image", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/images/ogp/ogp.png`},
-    { property: "og:site_name", content: "ホーム"},
-  ]
-};
+// export const meta: MetaFunction = () => {
+//   return [
+//     { title: "KOM-4i" },
+//     { name: "description", content: "4コマ漫画をAIで作れるサイト" },
+//     { property: "og:url", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/home`},
+//     { property: "og:title", content: "ホーム | KOM-4i"},
+//     { property: "og:image", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/images/ogp/ogp.png`},
+//     { property: "og:site_name", content: "ホーム"},
+//   ]
+// };
 
 const Home = () => {
 
   const { userId } = useAuth()
-  const { user } = useUser()
+  const { user, isLoaded } = useUser()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const userCheck = async () => {
@@ -42,11 +42,7 @@ const Home = () => {
     })
 
     const data = await res.json()
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
-    console.log(data)
-    return json(data)
+    setIsLoading(false)
   }
 
   useEffect(() => {
