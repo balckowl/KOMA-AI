@@ -5,7 +5,18 @@ import Header from "./components/base/header"
 import Step1 from "./components/create/step1";
 import Step2 from "./components/create/step2";
 import Step3 from "./components/create/step3";
+import { MetaFunction } from "@remix-run/node";
 
+export const meta: MetaFunction = () => {
+  return [
+    { title: "KOM-4i" },
+    { name: "description", content: "4コマ漫画をAIで作れるサイト" },
+    { property: "og:url", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/create`},
+    { property: "og:title", content: "create | KOM-4i"},
+    { property: "og:image", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/images/top/tech/bun.svg`},
+    { property: "og:site_name", content: "作品を作る"},
+  ]
+};
 
 const Create = () => {
   const [step, setStep] = useState<number>(0);
