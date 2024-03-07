@@ -8,7 +8,7 @@ export const meta: MetaFunction = ({ params, location, data }) => {
     { name: "description", content: "4コマ漫画をAIで作れるサイト" },
     { property: "og:url", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/404`},
     { property: "og:title", content: "404 page not found | KOM-4i"},
-    { property: "og:image", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/images/top/tech/bun.svg`},
+    { property: "og:image", content: `${import.meta.env.VITE_REMIX_PUBLIC_URL}/images/ogp/ogp.png`},
     { property: "og:site_name", content: "404 page not found"},
   ]
 };

@@ -11,7 +11,6 @@ const Step3 = () => {
       console.log("a")
       navigate('/home');
     }, 5000);
-
     return () => clearTimeout(redirectTimer); // クリーンアップ関数を使用してコンポーネントがアンマウントされたときにタイマーをクリアします
   },[]);
   
