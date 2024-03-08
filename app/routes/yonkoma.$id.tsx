@@ -77,7 +77,7 @@ const YonkomaId = () => {
 
             <p className="border-black border-[1px] p-3 md:p-6 mb-5 text-center text-2xl lg:text-3xl font-bold bg-white">{yonkoma.title}</p>
             {yonkoma.content.map((koma: any, index: number) => (
-              <div>
+              <div key={index}>
                 <div className="p-3 border-black border-[1px] mb-5 bg-white" key={index}>
                   <div className="mb-3 gap-3">
                     <div className="flex flex-wrap">
