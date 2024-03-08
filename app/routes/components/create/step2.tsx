@@ -100,7 +100,10 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
               />
             </h3>
             {yonkoma.map((koma: any, index: number) => (
-              <div className=" border-black border-[2px] mb-5 bg-white" key={index}>
+              <div 
+                key={index}
+                className=" border-black border-[2px] mb-5 bg-white" 
+              >
                 <div className="flex justify-start items-center gap-3 p-2">
                   <div className="text-[14px] w-full h-max bg-transparent resize-none overflow-hidden">
                     {isFinishList[index] ? (

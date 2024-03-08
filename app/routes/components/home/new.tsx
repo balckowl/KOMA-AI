@@ -80,7 +80,7 @@ const New = () => {
                     </p>
                     <div className="mx-auto w-max relative z-10">
                       <img src={new_manga.content[0].imageUrl} className="mb-2 w-[200px] h-[130px] object-cover border-[1px] border-black bg-white" />
-                      <div key={i} className="mb-4 relative">
+                      <div className="mb-4 relative">
                         <img src={new_manga.content[1].imageUrl} className="mb-2 w-[200px] h-[130px] object-cover border-[1px] border-black bg-white" />
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
                       </div>
