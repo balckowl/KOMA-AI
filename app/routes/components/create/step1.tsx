@@ -18,8 +18,7 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
   ]);
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [title, setTitle] = useState<string>("")
-  const [canSubmit, setCanSubmit] = useState<boolean>(false)
+  const [canSubmit, setCanSubmit] = useState<boolean>(true)
   const [previews, setPreviews] = useState<string[]>([
     "/images/create/no-image.png",
     "/images/create/no-image.png",
@@ -81,7 +80,6 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        title: title,
         urls: urls,
         postId: postId,
         userId: userId,
@@ -90,13 +88,13 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
 
     const comicTexts = await res.json()
 
-    setYonkoma(comicTexts)
     //開発時はここまでをコメントアウト
+    setYonkoma(comicTexts)
 
-    setTimeout(() => {
-      setIsLoading(true)
-      setStep(1)
-    }, 3000)
+    // setTimeout(() => {
+      // }, 3000)
+    setIsLoading(true)
+    setStep(1)
   }
 
   if (isLoading) {
@@ -107,7 +105,7 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
     <div className="container">
       <form onSubmit={handleSubmit} className="mt-10">
         {/* imgを入力するbox */}
-        <div className="max-w-[800px] mx-auto">
+        <div className="max-w-[800px] mx-auto pb-16">
           <div className="flex justify-between mb-2 items-center">
             <p className="mb-1">4枚の画像を選んでください</p>
             <div>
@@ -118,7 +116,7 @@ const Step1 = ({ setStep, setYonkoma, setPostId }: { setStep: any, setYonkoma: a
               ><FontAwesomeIcon icon={faPaintBrush} className="mr-2"/>作成する</Button>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 justify-center w-full max-w-[800px] mx-auto border-2 border-black p-6 pb-10 bg-gray-50">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 justify-center w-full max-w-[800px] mx-auto border-2 border-black p-6 pb-10 bg-slate-50">
             {[0, 1, 2, 3].map((_, i) => (
               <div key={i} className="w-full">
                 <p className="text-xl ml-1">{i + 1}.</p>

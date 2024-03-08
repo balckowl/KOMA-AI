@@ -55,11 +55,11 @@ const Yonkoma = () => {
         {/* heading */}
         <div className="w-max mb-12">
           <p className="text">・一覧</p>
-          <div className="w-full h-[4px] bg-[#00a5ec]"></div>
-          <h2 className="text-4xl font-bold">Yonkoma</h2>
+          <div className="w-full h-[4px] bg-[#ffb400]"></div>
+          <h2 className="text-4xl font-bold">全ての4コマ漫画</h2>
         </div>
 
-        <div className="flex gap-8 flex-wrap w-10/12 mx-auto justify-center xl:justify-start">
+        <div className="flex gap-8 flex-wrap w-10/12 mx-auto justify-center">
         {newsYonkoma.map((new_manga:any, i:number) => (
             <motion.div 
               viewport={{ once: true }}
@@ -81,15 +81,15 @@ const Yonkoma = () => {
                   <p className="mb-1 ml-1">{new_manga.author.userName}</p>
                 </div>
                 {/* 漫画ページ */}
-                <div className="w-auto h-max border-black border-[1px] border-b-0 p-4" style={{ borderImage: "linear-gradient(to bottom, black, transparent) 1" }}>
+                <div className="w-auto h-max border-black border-[1px] border-b-0 p-4 bg-gradient-to-b from-slate-50 via-transparent to-transparent" style={{ borderImage: "linear-gradient(to bottom, black, transparent) 1" }}>
                   <div className="w-max mx-auto">
                     <p className="text-center mb-2 relative z-10 border-black border-[1px]">
                       {new_manga.title}
                     </p>
                     <div className="mx-auto w-max relative z-10">
-                      <img src={new_manga.content[0].imageUrl} className="mb-2 w-[200px] h-[130px] object-cover" />
+                      <img src={new_manga.content[0].imageUrl} className="mb-2 w-[200px] h-[130px] object-cover border-[1px] border-black bg-white" />
                       <div key={i} className="mb-4 relative">
-                        <img src={new_manga.content[1].imageUrl} className="mb-2 w-[200px] h-[130px] object-cover" />
+                        <img src={new_manga.content[1].imageUrl} className="mb-2 w-[200px] h-[130px] object-cover  border-[1px] border-black bg-white" />
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
                       </div>
                     </div>

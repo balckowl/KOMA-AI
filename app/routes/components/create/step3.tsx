@@ -3,6 +3,7 @@ import Confetti from 'react-confetti'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
+
 const Step3 = () => {
   const { width, height } = useWindowSize()
   const navigate = useNavigate();

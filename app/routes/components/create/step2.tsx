@@ -1,7 +1,16 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "~/components/ui/dialog"
 import { useAuth } from "@clerk/remix"
 import { FormEvent, useState } from "react"
 import { Button } from "~/components/ui/button"
 import { motion } from 'framer-motion'
+import Posting from '../base/posting';
 
 const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma: any, setYonkoma: any, postId: string }) => {
 
@@ -9,11 +18,14 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
   const { userId } = useAuth()
   const [canSubmit, setCanSubmit] = useState<boolean>(false)
   const [isFinishList, setIsFinishList] = useState<boolean[]>([false, false, false, false])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
   // post
   const handlePost = async (e: FormEvent) => {
     e.preventDefault()
 
     //投稿するロジック
+    setIsLoading(true)
     const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/publish`, {
       method: "POST",
       headers: {
@@ -22,7 +34,10 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
       body: JSON.stringify({ title: title, contents: yonkoma, postId: postId, authorId: userId })
     })
 
-    setStep(2)
+    setTimeout(() => {
+      setIsLoading(false)
+      setStep(2)
+    }, 3000)
   }
 
   const handleChangeTitle = (message: string) => {
@@ -65,11 +80,15 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
     setIsFinishList(newIsFinishList)
   }
 
+  if (isLoading) {
+    return <Posting />
+  }
+
   return (
     <div className="container">
       <div>
         <form onSubmit={handlePost} className="flex justify-center flex-col items-center mt-20">
-          <div className="border-black border-2 p-6 md:p-12 w-[100%] max-w-[800px] h-[400px] md:h-[500px] overflow-y-scroll mb-4 bg-gray-50">
+          <div className="border-black border-2 p-6 md:p-12 w-[100%] max-w-[800px] h-[400px] md:h-[500px] overflow-y-scroll mb-4 bg-slate-50">
             <h3 className="border-black border-[2px] mb-5 bg-white ">
               <input
                 type="text"
@@ -82,8 +101,8 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
             </h3>
             {yonkoma.map((koma: any, index: number) => (
               <div className=" border-black border-[2px] mb-5 bg-white" key={index}>
-                <div className="flex justify-start items-center mb-3 gap-3 p-2">
-                  <div className="text-[14px] w-full h-[56px] bg-transparent resize-none overflow-hidden sm:pt-[21px]">
+                <div className="flex justify-start items-center gap-3 p-2">
+                  <div className="text-[14px] w-full h-max md:h-[54px]  bg-transparent resize-none overflow-hidden">
                     {isFinishList[index] ? (
                       // アニメーションが終わった
                       <textarea
@@ -91,24 +110,24 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
                         id={`text${index}`}
                         onChange={(e) => handleChangeText(index, e.target.value)}
                         placeholder="このコマに合うテキストを入力してください。"
-                        className="w-full focus:outline-none resize-none overflow-hidden"
+                        className="w-full focus:outline-none resize-none overflow-hidden text-xl lg:text-2xl"
+                        rows={2}
                         maxLength={30}
                       />
                     ) : (
                       // アニメーションが終わっていない
-                      <div>
-                        <div className="flex">
-                          {koma.text.split("").map((word: any, jndex: number) => (
-                            <motion.p
-                              viewport={{ once: true }}
-                              initial={{ opacity: 0, y: 10 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.5, delay: (index==0 ? 0.5 : 0) + jndex * 0.05 }}
-                              key={jndex}
-                              onAnimationComplete={() => {jndex==koma.text.split("").length-5 && finishAnimate(index)}}
-                            >{word}</motion.p>
-                          ))}
-                        </div>
+                      <div className="flex flex-wrap">
+                        {koma.text.split("").map((word: any, jndex: number) => (
+                          <motion.p
+                            viewport={{ once: true }}
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: (index == 0 ? 0.5 : 0) + jndex * 0.05 }}
+                            key={jndex}
+                            onAnimationComplete={() => { jndex == koma.text.split("").length - 5 && finishAnimate(index) }}
+                            className="text-xl lg:text-2xl"
+                          >{word}</motion.p>
+                        ))}
                       </div>
                     )}
 
@@ -125,12 +144,33 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
               </div>
             ))}
           </div>
-          <div className="w-max mx-auto pt-10 pb-20">
-            <Button
-              type="submit"
+          {/* 送信ボタン */}
+          <Dialog>
+            <DialogTrigger
               disabled={!canSubmit}
-              className="bg-blue-400 px-4 py-2 border-2 border-blue-400 rounded-lg cursor-pointer hover:bg-white hover:text-blue-400"
-            >投稿する</Button>
+              className={`
+                bg-blue-400 text-white px-4 py-2 border-2 border-blue-400 rounded-lg cursor-pointer transition-all
+                ${!canSubmit ? "opacity-60 " : "hover:bg-white hover:text-blue-400"}
+                `}
+            >
+              投稿する
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>本当に投稿しますか</DialogTitle>
+                <p className="text-sm">投稿したら編集できません</p>
+                <img src="/images/create/posting.jpg" className="w-[50%] mx-auto py-10" />
+                <DialogDescription className="flex justify-around">
+                  <Button
+                    onClick={handlePost}
+                    className="bg-blue-400 px-4 py-2 border-2 border-blue-400 rounded-lg cursor-pointer hover:bg-white hover:text-blue-400"
+                  >はい</Button>
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+
+          <div className="w-max mx-auto pt-10 pb-20">
           </div>
         </form>
       </div >
