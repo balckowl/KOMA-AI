@@ -56,7 +56,7 @@ const Yonkoma = () => {
         <div className="w-max mb-12">
           <p className="text">・一覧</p>
           <div className="w-full h-[4px] bg-[#ffb400]"></div>
-          <h2 className="text-4xl font-bold">全ての4コマ漫画</h2>
+          <h2 className="text-4xl font-bold">Yonkomas</h2>
         </div>
 
         <div className="flex gap-8 flex-wrap w-10/12 mx-auto justify-center">

@@ -27,10 +27,10 @@ const New = () => {
 
   const getTrendData = async () => {
     setIsLoading(true)
-    const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/trend`)
+    const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/new`)
     const newData = await res.json()
     console.log(newData)
-    setTrendsYonkoma(newData.val)
+    setTrendsYonkoma(newData)
     setIsLoading(false)
   }
 

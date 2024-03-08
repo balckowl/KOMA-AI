@@ -123,7 +123,7 @@ const YonkomaId = () => {
 
       {/* footer */}
       <div className="absolute bottom-0 w-full text-center">
-        <small> ©2024 created by よんこまくりえいたーず</small>
+        <small> ©2024 created by 4コマ漫画クリエーターズ</small>
       </div>
     </div>
   )
