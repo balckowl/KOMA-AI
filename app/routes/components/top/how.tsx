@@ -21,7 +21,7 @@ const How = () => {
           ease: "easeOut"
         }}
       >
-        <img src="/images/top/how-img.png" className="w-[50vw] min-w-[400px] max-w-[600px]" />
+        <img src="/images/top/how.png" className="w-[50vw] min-w-[400px] max-w-[600px]" />
       </motion.div>
     </div>
 

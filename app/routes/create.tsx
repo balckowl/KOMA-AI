@@ -32,7 +32,7 @@ const Create = () => {
   return (
     <div className="relative min-h-[100vh] h-max">
       <Header />
-      <div className="container">
+      <div>
         {step === 0 ? (
           <Step1 setStep={setStep} setYonkoma={setYonkoma} setPostId={setPostId} />
         ) : step === 1 ? (

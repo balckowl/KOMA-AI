@@ -16,7 +16,7 @@ import { getAuth } from "@clerk/remix/ssr.server";
 import { useEffect, useState } from "react";
 import Loading from "./components/base/loading";
 import { useAuth } from "@clerk/remix";
-import { useNavigate } from "@remix-run/react";
+import { Link, useNavigate } from "@remix-run/react";
 
 // export const meta: MetaFunction = () => {
 //   return [
@@ -38,7 +38,7 @@ import { useNavigate } from "@remix-run/react";
 // };
 
 const Works = () => {
-  
+
   const [myYonkoma, setMyYonkoma] = useState<any>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const { userId } = useAuth()
@@ -62,7 +62,7 @@ const Works = () => {
     return <Loading />
   }
 
-  const deleteYonkoma = async(id:string) => {
+  const deleteYonkoma = async (id: string) => {
     const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/post/${id}`, {
       method: "DELETE"
     })
@@ -81,8 +81,8 @@ const Works = () => {
           <h2 className="text-4xl font-bold">MY WORKS</h2>
         </div>
 
-        <div className="flex gap-8 flex-wrap w-10/12 mx-auto justify-center xl:justify-start">
-          {myYonkoma.map((trend:any, i:number) => (
+        <div className="flex gap-8 flex-wrap w-10/12 mx-auto justify-center">
+          {myYonkoma.map((trend: any, i: number) => (
             <motion.div
               viewport={{ once: true }}
               initial={{ opacity: 0, y: 40 }}
@@ -96,23 +96,25 @@ const Works = () => {
             >
               {/* <p className="mb-1 ml-1">{trend.author.userName}</p> */}
               {/* 漫画ページ */}
-              <div className="w-auto h-max border-black border-[1px] p-4">
-                <div className="w-max mx-auto">
-                  <p className="text-center mb-2 relative z-10 border-black border-[1px]">
-                    {trend.title}
-                  </p>
+              <Link className="p-1" to={`/yonkoma/${trend.postId}`}>
+                <div className="w-auto h-max border-black border-[2px] p-4 bg-slate-50">
+                  <div className="w-max mx-auto">
+                    <p className="text-center mb-2 relative z-10 border-black border-[1px] bg-white">
+                      {trend.title}
+                    </p>
 
-                  {[0, 1, 2, 3].map((j, _) => (
-                    <div key={j}>
-                      <div className="mx-auto w-max relative z-10">
-                        <img src={trend.content[j].imageUrl} className="mb-2 w-[200px] h-[130px] object-cover" />
+                    {[0, 1, 2, 3].map((j, _) => (
+                      <div key={j} className="bg-white">
+                        <div className="mx-auto w-max relative z-10">
+                          <img src={trend.content[j].imageUrl} className="mb-2 w-[200px] h-[130px] object-cover border-[1px] border-black bg-white" />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex justify-between mt-2">
+              </Link>
+              <div className="flex justify-between">
                 {/* いいね数 */}
                 <div className="flex gap-4 p-2 items-center">
                   <div className="text-[24px] text-red-500">
@@ -130,9 +132,9 @@ const Works = () => {
                   <DialogContent>
                     <DialogHeader>
                       <DialogTitle>本当に削除しますか</DialogTitle>
-                      <p className="text-sm pt-2">削除した作品は復元できません</p>
-                      <img src="/images/works/hengao.png" className="w-[50%] mx-auto" />
-                      <DialogDescription className="flex justify-around pt-10">
+                      <p className="text-sm">削除した作品は復元できません</p>
+                      <img src="/images/works/delete.webp" className="w-[50%] mx-auto py-10" />
+                      <DialogDescription className="flex justify-around">
                         <Button
                           onClick={() => deleteYonkoma(trend.postId)}
                           className="bg-[#00b82e] hover:bg-[#29882e]"

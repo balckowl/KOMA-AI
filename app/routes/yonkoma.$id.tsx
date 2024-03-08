@@ -8,8 +8,8 @@ import {  faRotateLeft, faHeart as solidHeart } from '@fortawesome/free-solid-sv
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { json } from "@remix-run/node";
+import { motion } from 'framer-motion'
 import Loading from "./components/base/loading";
-
 
 export const loader = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
@@ -56,8 +56,8 @@ const YonkomaId = () => {
     <div className="relative min-h-[100vh] h-max">
       <Header />
       <div className="container">
-        <div className="mt-10 mb-10 w-max mx-auto">
-          <div className="flex justify-between">
+        <div className="mt-10 mb-10 max-w-[800px] mx-auto">
+          <div className="flex justify-between max-w-[800px]">
             <div className="flex items-center gap-2 mb-2">
               <Avatar className="w-[42px] h-[42px]">
                 <AvatarImage src={yonkoma.author.userPhotoURL} />
@@ -73,19 +73,34 @@ const YonkomaId = () => {
               </Link>
             </div>
           </div>
-          <div className="border-black border-[2px] w-max p-[50px] h-[500px] overflow-y-scroll mb-4">
+          <div className="border-black border-[2px] w-full p-6 md:p-12 h-[400px] md:h-[500px]  overflow-y-scroll mb-4 bg-slate-50">
 
-            <p className="border-black border-[2px] p-5 mb-5 text-center text-xl font-bold">{yonkoma.title}</p>
+            <p className="border-black border-[1px] p-3 md:p-6 mb-5 text-center text-2xl lg:text-3xl font-bold bg-white">{yonkoma.title}</p>
             {yonkoma.content.map((koma: any, index: number) => (
               <div>
-                <div className="p-3 border-black border-[2px] mb-5" key={index}>
-                  <div className="flex justify-between items-center mb-3 gap-3">
-                    <p>{koma.text}</p>
+                <div className="p-3 border-black border-[1px] mb-5 bg-white" key={index}>
+                  <div className="mb-3 gap-3">
+                    <div className="flex flex-wrap">
+                      {koma.text.split("").map((word: any, jndex: number) => (
+                        <motion.div
+                          viewport={{ once: true }}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: (index==0 ? 0.5 : 0) + jndex * 0.005 }}
+                          key={jndex}
+                          className="text-xl lg:text-2xl"
+                        >{word}</motion.div>
+                      ))}
+                    </div>
                   </div>
-                  <img src={koma.imageUrl} alt="" className="w-[500px] h-[300px] object-cover" />
+                  <img 
+                    src={koma.imageUrl}
+                    className="aspect-[16/9] w-[100%] object-cover"
+                  />
                 </div>
               </div>
             ))}
+            
           </div>
 
           {/* いいねボタン */}
