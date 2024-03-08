@@ -102,7 +102,7 @@ const Step2 = ({ setStep, yonkoma, setYonkoma, postId }: { setStep: any, yonkoma
             {yonkoma.map((koma: any, index: number) => (
               <div className=" border-black border-[2px] mb-5 bg-white" key={index}>
                 <div className="flex justify-start items-center gap-3 p-2">
-                  <div className="text-[14px] w-full h-max md:h-[54px]  bg-transparent resize-none overflow-hidden">
+                  <div className="text-[14px] w-full h-max bg-transparent resize-none overflow-hidden">
                     {isFinishList[index] ? (
                       // アニメーションが終わった
                       <textarea
