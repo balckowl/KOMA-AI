@@ -21,7 +21,7 @@ import { MetaFunction } from "@remix-run/node";
 const Create = () => {
   const [step, setStep] = useState<number>(0);
   const [yonkoma, setYonkoma] = useState<any>([
-    { text: "1コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", imageUrl: "/images/create/no-image.png" },
+    { text: "1コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。公園のブランコで遊ぶ女の子。楽しそうではない様子", imageUrl: "https://placeholder.pics/svg/300" },
     { text: "2コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", imageUrl: "/images/create/no-image.png" },
     { text: "3コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", imageUrl: "/images/create/no-image.png" },
     { text: "4コマ目：公園のブランコで遊ぶ女の子。楽しそうではない様子。", imageUrl: "/images/create/no-image.png" },
