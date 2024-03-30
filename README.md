@@ -1,6 +1,6 @@
 # KOM-4i
 
-KOM-4iは、サポーターズ主催の技育CAMPハッカソンvol.1(2024年2月)にて作成したサイトです。<br />
+KOM-4iは、サポーターズ主催の技育CAMPハッカソンvol.1(2024年3月)にて作成したサイトです。<br />
 
 - **デザイン**: [@sora](https://github.com/NautilusCode), [@kusira](https://github.com/kusira)
 - **フロントエンド**: [@kusira](https://github.com/kusira), [@y_ta](https://github.com/balckowl)
