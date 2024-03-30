@@ -17,7 +17,7 @@ KOM-4iは、漫画×AIをテーマに開発したWebアプリです。選んだ4
 
 ## デモ動画 🎥
 
-- **謎解き動画**
+- **漫画作成動画**
 
 [漫画作成動画]()
 
@@ -27,6 +27,8 @@ KOM-4iは、漫画×AIをテーマに開発したWebアプリです。選んだ4
 - **バックエンド**: Hono, TS, Gemini, LangChain, Firebase, Supabase, Prisma
 - **認証**: Clerk
 - **インフラ**: 未デプロイ
+
+![技術スタック](https://github.com/balckowl/KOMA-AI/assets/129815120/6f43dc77-781a-4c6c-8dcb-6fc582624faf)
 
 ## 今後の展望 🔭
 
