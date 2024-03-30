@@ -17,9 +17,9 @@ KOM-4iは、漫画×AIをテーマに開発したWebアプリです。選んだ4
 
 ## デモ動画 🎥
 
-- **漫画作成動画**
+- **4コマ漫画作成動画**
 
-[漫画作成動画](https://github.com/balckowl/KOMA-AI/assets/129815120/6526ffeb-0490-4f4e-b246-278d745460c2)
+[4コマ作成動画](https://github.com/balckowl/KOMA-AI/assets/129815120/c0ac9b9e-a481-4baf-84fb-4f92a6107a3f)
 
 ## 技術スタック 🚀
 
