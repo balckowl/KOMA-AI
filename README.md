@@ -2,9 +2,9 @@
 
 KOM-4iは、サポーターズ主催の技育CAMPハッカソンvol.1(2024年2月)にて作成したサイトです。<br />
 
-- **デザイン**: 
-- **フロントエンド**: [@kusira](https://github.com/kusira) 
-- **バックエンド**: [@y_ta](https://github.com/balckowl)
+- **デザイン**: [@sora](https://github.com/NautilusCode), [@kusira](https://github.com/kusira)
+- **フロントエンド**: [@kusira](https://github.com/kusira), [@y_ta](https://github.com/balckowl)
+- **バックエンド**: [@potekichi](https://github.com/potek1ch1), [@y_ta](https://github.com/balckowl)
 
 本ハッカソンでは、「新しい技術への挑戦」というコンセプトのもと取り組みました。BunやRemix、Honoなど、情報が少ない技術の開発には時折行き詰まりもありましたが、多くを学ぶことができ、努力賞🥉を受賞しました。
 
