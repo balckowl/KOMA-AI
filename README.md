@@ -1,36 +1,40 @@
-# Welcome to Remix + Vite!
+# KOM-4i
 
-📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/future/vite) for details on supported features.
+KOM-4iは、サポーターズ主催の技育CAMPハッカソンvol.1(2024年2月)にて作成したサイトです。<br />
 
-## Development
+- **デザイン**: 
+- **フロントエンド**: [@kusira](https://github.com/kusira) 
+- **バックエンド**: [@y_ta](https://github.com/balckowl)
 
-Run the Vite dev server:
+本ハッカソンでは、「新しい技術への挑戦」というコンセプトのもと取り組みました。BunやRemix、Honoなど、情報が少ない技術の開発には時折行き詰まりもありましたが、多くを学ぶことができ、努力賞🥉を受賞しました。
 
-```shellscript
-npm run dev
-```
+## 作品概要 📦
+KOM-4iは、漫画×AIをテーマに開発したWebアプリです。選んだ4枚の画像からAIがくすっと笑えるオリジナルの漫画を生成してくれます。また、その作品を公開することもできます。
 
-## Deployment
+## スライドリンク🔗
 
-First, build your app for production:
+[スライドはこちら](https://www.canva.com/design/DAF-VCUDKZA/JJ_JhjC7htHkG0lcHWKaGQ/edit?utm_content=DAF-VCUDKZA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
-```sh
-npm run build
-```
+## デモ動画 🎥
 
-Then run the app in production mode:
+- **謎解き動画**
 
-```sh
-npm start
-```
+[漫画作成動画]()
 
-Now you'll need to pick a host to deploy it to.
+## 技術スタック 🚀
 
-### DIY
+- **フロントエンド**: Remix, Vite, TS, Tailwind, Shadcn, Framer-Motion, Zustand
+- **バックエンド**: Hono, TS, Gemini, LangChain, Firebase, Supabase, Prisma
+- **認証**: Clerk
+- **インフラ**: 未デプロイ
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+## 今後の展望 🔭
 
-Make sure to deploy the output of `npm run build`
+- 検索機能やページネーションの実装
+- 吹き出し用いての生成
+- フォロー機能の実装
+- プロンプトの研鑽
 
-- `build/server`
-- `build/client`
+
+
+
